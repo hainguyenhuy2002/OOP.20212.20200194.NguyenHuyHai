@@ -5,21 +5,16 @@ public class Triangle {
         int height = Integer.parseInt(JOptionPane.showInputDialog(null, "Height of the triangle: "));
         String triangle = "";
         for (int i = 0; i < height; i++) {
-            for (int j = height - i + 1; j>=1; j--) {
+            for (int j = 0; j < height - i - 1; j++) {
                 triangle += " ";
             }
-            
-            for (int k = 1; k <= i; k++) {
-                triangle += "*";            
+            for (int k = 0; k < 1 + 2*i; k++) {
+                triangle += "*";
             }
-            for (int k = i - 1; k >= 1; k--) {
-                triangle += "*";            
-            }
-            
-         
             triangle += "\n";
         }
-        JOptionPane.showMessageDialog(null, triangle, "Star", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, triangle, "Triangle", JOptionPane.INFORMATION_MESSAGE);
+        System.out.println(triangle);
         System.exit(0);
     }
 }
