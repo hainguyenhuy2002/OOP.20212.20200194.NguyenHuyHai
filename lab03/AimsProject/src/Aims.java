@@ -8,8 +8,14 @@ public class Aims {
         anOrder.addDigitalVideoDisc(dvd2);
 
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation","",0 ,18.99f);
+
         anOrder.addDigitalVideoDisc(dvd3);
-        
-        
+        //anOrder.addDigitalVideoDisc(dvd3, dvd2);
+
+        //anOrder.removeDigitalVideoDisc(dvd1);
+
+        //print total cost f the items in the cart
+        System.out.println("Total Cost is: ");
+        System.out.println(anOrder.totalCost());
     }
 }
