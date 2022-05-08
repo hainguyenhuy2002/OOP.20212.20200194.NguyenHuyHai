@@ -92,4 +92,5 @@ class sorting
         + "\nSum of all elements in the array: " + sum +"\nAverage of all elements in the array: " + sum/array.length,"Result",JOptionPane.INFORMATION_MESSAGE);
 
     }
+    
 }
