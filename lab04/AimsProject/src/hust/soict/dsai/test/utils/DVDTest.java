@@ -1,5 +1,13 @@
+package hust.soict.dsai.test.utils;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.utils.DVDUtils;
+
+
+
 
 public class DVDTest {
+    
+
 
 	public static void main(String[] args) {
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("AAAA", "aaaa", "aaaa", 1, 5.6f);
@@ -23,5 +31,6 @@ public class DVDTest {
 			System.out.println(sorted[i].toString());
 		}
 	}
+
 
 }
