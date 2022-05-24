@@ -79,15 +79,6 @@ public class DigitalVideoDisc{
 		return ismatch;
 	}
 
-    public void getDetail() {
-		int id = this.getId();
-		String title = this.getTitle();
-		String category = this.getCategory();
-		String director = this.getDirector();
-		int length = this.getLength();
-		float price = this.getCost();
-		
-		System.out.println(String.format("%s. DVD-%s-%s-%s-%s: %s$", id, title,category, director, length, price));
-	}
+
 }
 

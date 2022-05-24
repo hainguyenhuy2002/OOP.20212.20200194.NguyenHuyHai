@@ -128,7 +128,7 @@ public class Cart {
         
     
 
-    public DigitalVideoDisc TitileSearch(String title){
+    public DigitalVideoDisc TitleSearch(String title){
 
 		boolean searched = false;
 		DigitalVideoDisc Title = null;
@@ -155,7 +155,7 @@ public class Cart {
 
 
 
-    public void AllItems(){
+    public void print(){
         
         
         DigitalVideoDisc[] ListOfCart = new DigitalVideoDisc[qtyOrdered];

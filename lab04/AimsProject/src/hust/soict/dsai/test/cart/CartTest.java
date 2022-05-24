@@ -20,7 +20,7 @@ public class CartTest {
 		cart.addDigitalVideoDisc(dvd3);
 		
 		//Test the print method
-		cart.AllItems();
+		cart.print();
 		//Test the search method
 		//System.out.println(cart.IdSearch(3));
 		

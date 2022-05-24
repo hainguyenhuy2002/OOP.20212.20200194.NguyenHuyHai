@@ -36,10 +36,10 @@ public class DiskTest {
         cart.IdSearch(3);
 		
 		//search by title
-		cart.TitileSearch("Aladin");
+		cart.TitleSearch("Aladin");
 		//Disk found with the title: Aladin!
 		//3. DVD-Aladin-Animation-null-0: 18.99$
-		cart.TitileSearch("Handsome");
+		cart.TitleSearch("Handsome");
 		//No such dics found with the title: Queen!
 	}
 }
