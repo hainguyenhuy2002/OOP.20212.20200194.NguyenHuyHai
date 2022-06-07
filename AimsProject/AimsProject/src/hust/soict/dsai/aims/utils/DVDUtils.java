@@ -1,13 +1,11 @@
 package hust.soict.dsai.aims.utils;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
+import java.util.ArrayList;
 
 public class DVDUtils{
-    public static String compareByCost(DigitalVideoDisc disc1, 
-    DigitalVideoDisc disc2 ){
+    public static String compareByCost(Media disc1, 
+    Media disc2 ){
         float result = disc1.getCost() - disc2.getCost();
         if(result >0){
             return "dvd"+ disc1.getTitle()+" is more expensive than "+ disc2.getTitle();
@@ -22,7 +20,7 @@ public class DVDUtils{
 
     
 
-    public static String compareByTitle(DigitalVideoDisc disc1, DigitalVideoDisc disc2){
+    public static String compareByTitle(Media disc1, Media disc2){
         float result = disc1.getTitle().compareTo(disc2.getTitle());
         if(result >0){
             return "dvd" + disc1.getTitle()+" is larger than dvd "+ disc2.getTitle() + " in alphabets orders";
@@ -36,49 +34,36 @@ public class DVDUtils{
     }
 
 
-
-    private static Comparator<DigitalVideoDisc> cost = new Comparator<DigitalVideoDisc>() {
-        
-        public int compare(DigitalVideoDisc dics1, DigitalVideoDisc dics2){
-            return (int) (dics1.getCost()- dics2.getCost());
-            
-        }
-    };
-	
-
-
-
-
-    private static Comparator<DigitalVideoDisc> title = new Comparator<DigitalVideoDisc>(){
-        public int compare(DigitalVideoDisc dics1, DigitalVideoDisc dics2){
-            return (int) (dics1.getTitle().compareTo(dics2.getTitle()));
-        }
-    };
-
-    private static Comparator<DigitalVideoDisc> 
-    length = new Comparator<DigitalVideoDisc>(){
-        public int compare(DigitalVideoDisc dics1, DigitalVideoDisc dics2){
-            return (int) (dics1.getLength() - dics2.getLength());
-        }
-    };
-
-
-
-    public static DigitalVideoDisc[] sortByCost(DigitalVideoDisc[] dvds){
-        Arrays.sort(dvds, cost);
-        return dvds;
+	public static ArrayList<Media> sortByCost(ArrayList<Media> Media) {
+		int i;
+        int j;
+		for(i = 0; i<Media.size()-1; i++) {
+			for (j = 0 ; j < Media.size()-i-1; j++) {
+				if (Media.get(j).getCost() > Media.get(j+1).getCost()) {
+					
+					Media.set(j, Media.get(j+1));
+					Media.set(j+1, Media.get(j));
+				}
+			}
+		}
+        return Media;
     }
     
-    public static DigitalVideoDisc[] sortByTitle(DigitalVideoDisc[] dvds){
-        Arrays.sort(dvds, title);
-        return dvds;
-    }
+        public static ArrayList<Media> sortByTitle(ArrayList<Media> Media) {
+            int i;
+            int j;            
+            for(i = 0; i<Media.size()-1; i++) {
+                for (j = 0; j < Media.size() - i -1; j++) {
+                    if ((int) Media.get(j).getTitle().charAt(0) > (int) Media.get(j+1).getTitle().charAt(0)) {
+                        
+                        Media.set(j, Media.get(j +1));
+                        Media.set(j+1, Media.get(j));
+                    }
+                }
+        
+            }
+            return Media;
+        }
 
-    public static DigitalVideoDisc[] sortByLength(DigitalVideoDisc[] dvds){
-        Arrays.sort(dvds, length);
-        return dvds;
-    }
-
-
-
-}
+        
+ }

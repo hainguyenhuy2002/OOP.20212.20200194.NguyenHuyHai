@@ -1,61 +1,29 @@
 package hust.soict.dsai.aims.media;
-
+import hust.soict.dsai.aims.playable.Playable;
 import java.time.LocalDate;
 
-public class DigitalVideoDisc extends Media{
-    private String title;
-    private String category;
-    private String director;
-    private int length;
-    private float cost;
-    private LocalDate dateAdded = LocalDate.now();
-
+public class DigitalVideoDisc extends Disc implements Playable{
+    // Constructor
     public DigitalVideoDisc(String title){
-        super();
-        this.title = title;
-
+        super(title);
     }
     
     public DigitalVideoDisc(String title, String category, float cost){
-        this(title);
-        this.category = category;
-        this.cost = cost;
+        super(title, category, cost);
        
     }
     public DigitalVideoDisc(String title, String category, String director, float cost){
-        this(title, category, cost);
-        this.director = director;
+        super(title, category, director, cost);
     }
     public DigitalVideoDisc(String title, String category, String director, int length, float cost){
-        this(title, category, director, cost);
-        this.length = length;
+        super(title, category, director, length, cost);
     }
 
-
-
-    public String getTitle(){
-        return title;
-    }
-     
-    public String getCategory(){
-        return category;
-    }
-    
-    public String getDirector(){
-        return director;
-    }
-    
-    public int getLength(){
-        return length;
-    }
-    
-    public float getCost(){
-        return cost;
-    }
-
-    public LocalDate getDayAdded() {
-		return dateAdded;
+	public LocalDate getDateAdded() {
+		return this.getDateAdded();
 	}
+
+
     
 	public boolean isMatch(String title) {
 		String[] titleArray = title.split(" ");
@@ -70,6 +38,22 @@ public class DigitalVideoDisc extends Media{
 		return ismatch;
 	}
 
+    //get detail information about DVD:
+    public void getInfo() {
+		int id = this.getid();
+		String title = this.getTitle();
+		String category = this.getCategory();
+		String director = this.getDirector();
+		int length = this.getLength();
+		float price = this.getCost();
+		
+		System.out.println(String.format("%s. DVD-%s-%s-%s-%s: %s$", id, title,category, director, length, price));
+	}
+
+	public void play(){
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: "+ this.getLength());
+	}
 
 }
 
