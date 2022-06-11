@@ -49,6 +49,7 @@ public class Aims {
 		System.out.println("1. See a Media's details");
 		System.out.println("2. Add a Media to cart");
 		System.out.println("3. See current cart");
+		System.out.println("4. Play a Media you want");
 		System.out.println("0. Back");
 		System.out.println("-------------------------");
 		System.out.println("Please choose a number: 0-1-2-3");
@@ -87,6 +88,11 @@ public class Aims {
 		else if (Menustore == 3) {
 			cartMenu();
 		}
+		else if (Menustore == 4){
+			playFile();
+		}
+
+
 		else if (Menustore == 0){
 			showMenu();
 		}
@@ -282,6 +288,30 @@ public class Aims {
 	showMenu();
 	
 	}
+
+
+	public static void playFile() {
+		System.out.println("Options:  ");
+		System.out.println("-------------------------");
+		System.out.println("1. Play a Compact Disc");
+		System.out.println("2. Play a DigitalVideoDics");
+		System.out.println("0. Back");
+		System.out.println("-------------------------");
+		System.out.println("Please choose a number: 0-1-2");
+		System.out.println();
+		
+		int playFile = scanner.nextInt();
+
+		if (playFile == 0){
+			storeMenu();
+		}
+
+		else if (playFile ==1){
+			System.out.println("Please enter the name of Compact Disc you want to play");
+
+		}
+	}
+	//Commememememetaetaemkamsfklmaklfmlsksmfklsamfklsamlksamlkk
 
 
 	
