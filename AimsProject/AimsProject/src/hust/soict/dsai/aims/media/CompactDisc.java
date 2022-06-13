@@ -65,10 +65,25 @@ public class CompactDisc extends Disc implements Playable{
 			System.out.println(String.format("Successfull remove a track", Track.getTitle()));
 		}
 		else {
-			System.out.println(String.format("Track no found"));
+			System.out.println(String.format("Track no found")); 
 		}
 	}
 	
+    public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append(String.format("CD title: ", this.getTitle()));
+		result.append(String.format("CD category: ", this.getCategory()));
+		result.append(String.format("CD artist: ", this.getArtist()));
+		result.append(String.format("CD director: ", this.getDirector()));
+		result.append(String.format("CD length: ", this.getLength()));
+		result.append(String.format("CD cost: ", this.getCost()));
+		result.append("\nTracks on CD: \n");
+		int i = 0;
+        for (i = 0; i < tracks.size(); i++) {
+			result.append(tracks.get(i).toString());
+		}
+		return result.toString();
+	}
 	
 	//Method play
     public void play() {
