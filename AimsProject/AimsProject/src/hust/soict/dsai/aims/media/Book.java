@@ -90,10 +90,10 @@ public class Book extends Media {
 		
 		result.append(String.format("CD cost: ", this.getCost()));
 
-        result.append("The list of author(s) of this books:\n");
-		int i = 0;
+        result.append("The authors of this books are:\n");
+		int i =0;
         for (i = 0; i < ListOfAuthors.size(); i++) {
-			result.append(String.format("Author: ", i+1, ListOfAuthors.get(i)));
+			result.append(String.format("%s. Author: %s\n", i+1, ListOfAuthors.get(i)));
 		}
 		
         result.append(String.format("Book length of tokens: ", this.getContentTokens().size()));
