@@ -31,10 +31,26 @@ public class Track implements Playable{
         return length;
     }
 
+
+    public boolean equals(Object o){
+        if(o instanceof Track){
+            return (this.title == ((Track) o).title & this.length ==((Track) o).length);
+        }
+        else{
+            return false;
+        }
+    }
+
+
     public void play(){
+        if(this.getLength() <= 0){
+            System.out.println("The track cannot be played");
+        }
+        else{
         System.out.println("Playing DVD: "+ this.getTitle());
 
         System.out.println("DVD length: "+ this.getLength());
+        }
 
     }
 
