@@ -1,12 +1,10 @@
-package hust.soict.dsai.aims;
+package hust.soict.dsai.aims.aims;
 import java.util.Scanner;
 import hust.soict.dsai.aims.cart.Cart;
-
-import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.memory.MemoryDaemon;
 import hust.soict.dsai.aims.playable.Playable;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.screen.manager.StoreManagerScreen;;
 
 public class Aims {
@@ -23,10 +21,19 @@ public class Aims {
 		
 		Store store = new Store();
 		
-		for(int i = 1; i < 5; i++) {
-			DigitalVideoDisc media = new DigitalVideoDisc("The Lion King " + i, "Animation", "Roger Allers", 87, 19.95f);
-			store.addMedia(media);
-		}
+		DigitalVideoDisc media1 =  new DigitalVideoDisc("One Punch Man", "Science Fiction", "Huy Hai", 87, 27.95f);
+		store.addMedia(media1);
+
+		CompactDisc mediahihi = new CompactDisc("Hehe", "Horror", 100);
+		store.addMedia(mediahihi);
+
+		
+		store.addMedia(new DigitalVideoDisc("Naruto", "Action", "Anya", 85, 19.02f));
+
+		store.addMedia(new DigitalVideoDisc("Sasukeeee", "Action", "Anya", 85, 19.02f));
+
+		store.addMedia(new CompactDisc("Critical thinking", "Science",  1000 ));
+
 
 		DigitalVideoDisc media2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		store.addMedia(media2);
