@@ -5,12 +5,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.zip.ZipFile;
 
 public class NumberGrid extends JFrame {
 	private JButton[] btnNumbers = new JButton[10];
 	private JButton btnDelete, btnReset;
 	private JTextField tfDisplay;
-	
+    private String z, zt;
+
 	public NumberGrid() {
 		tfDisplay = new JTextField();
 		tfDisplay.setEditable(false);
@@ -61,9 +63,11 @@ public class NumberGrid extends JFrame {
             }
             else if (button.equals("DEL")){
                 //handels the "DEL" case
-                tfDisplay.setText("");
-                for(int i=0; i<tfDisplay.getText().length()-1;i++)
-                tfDisplay.setText(tfDisplay.getText()+tfDisplay.getText().charAt(i));
+                zt=tfDisplay.getText();
+                try{
+                    z=zt.substring(0, zt.length()-1);
+                            }catch(StringIndexOutOfBoundsException f){return;}
+                        tfDisplay.setText(z);
 
             }
             else {

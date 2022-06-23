@@ -48,7 +48,13 @@ public class LookAndFeelDemo extends JFrame{
             public void actionPerformed(ActionEvent ae){
                 int index = cbLookAndFeel.getSelectedIndex();
                 try{
-                    UIManager.setLookAndFeel(lafInfos[index].getClassName());
+                    if (index < lafInfos.length) {
+						UIManager.setLookAndFeel(lafInfos[index].getClassName());
+					} else if (index == lafInfos.length) {
+						UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+					} else if (index == (lafInfos.length + 1)){
+						UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+					}
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -64,5 +70,9 @@ public class LookAndFeelDemo extends JFrame{
 
 
     }
+    public static void main(String[] args) {
+		new LookAndFeelDemo();
+	}
+
     
 }
