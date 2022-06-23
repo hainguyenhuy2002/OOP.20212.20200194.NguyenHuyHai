@@ -4,6 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.screen.adding.AddBookToStoreScreen;
+import hust.soict.dsai.aims.screen.adding.AddCDToStoreScreen;
+import hust.soict.dsai.aims.screen.adding.AddDVDToStoreScreen;
 
 import java.awt.event.*;
 import hust.soict.dsai.aims.store.Store;
@@ -40,7 +42,13 @@ public class StoreManagerScreen extends JFrame{
 
     JMenuBar createMenuBar(){
         StoreManagerScreen screen = this;
+
         AddBookToStoreScreen AddingBook = new AddBookToStoreScreen(this, store);
+        
+        AddDVDToStoreScreen AddingDVD = new AddDVDToStoreScreen(this, store);
+        
+        AddCDToStoreScreen AddingCD = new AddCDToStoreScreen(this, store);
+
         JMenu menu = new JMenu("Options");
 
 
@@ -62,7 +70,6 @@ public class StoreManagerScreen extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				AddingBook.On();
 			}
 			
@@ -76,8 +83,7 @@ public class StoreManagerScreen extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("do ngoc");
+				AddingCD.On();
 			}
 			
 		});
@@ -90,8 +96,7 @@ public class StoreManagerScreen extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("ngoc qua co");
+				AddingDVD.On();
 			}
 			
 		});

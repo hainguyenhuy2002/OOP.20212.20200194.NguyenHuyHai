@@ -9,14 +9,15 @@ public abstract class AddItemToStoreScreen extends JFrame {
     protected JTextField tfCategory;
     protected JTextField tfCost; 
     protected JButton btn;
-    protected abstract void reset();
+    protected abstract void Clear();
  
     protected JPanel container =   new JPanel();
     public AddItemToStoreScreen(String Name){
         Container cp = getContentPane();
+        setSize(700, 400 );
+
         JFrame f= new JFrame();  
         d = new JDialog(f , "Adding "+ Name, true);  
-        container.setLayout(new GridLayout(4, 5,1,5));
         
         container.add(new JLabel("Enter "+ Name+ " title: "));
         tfTitle = new JTextField(10);
@@ -33,13 +34,12 @@ public abstract class AddItemToStoreScreen extends JFrame {
         btn = new JButton("Add");
         cp.add(btn, BorderLayout.SOUTH);
         cp.add(container, BorderLayout.LINE_START);
-        cp.setSize(650, 420);
         cp.setVisible(true);
 
     }
 	
 	public void On() {
-		reset();
+		Clear();
 		setVisible(true);
 	}
 
