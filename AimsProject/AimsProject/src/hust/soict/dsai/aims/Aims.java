@@ -1,20 +1,52 @@
 package hust.soict.dsai.aims;
 import java.util.Scanner;
-
-import javax.swing.text.PlainDocument;
-
 import hust.soict.dsai.aims.cart.Cart;
 
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.memory.MemoryDaemon;
 import hust.soict.dsai.aims.playable.Playable;
-
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.screen.manager.StoreManagerScreen;;
 
 public class Aims {
 	private static Scanner scanner = new Scanner(System.in);
 	private static Cart cart = new Cart();
 	private static Store store = new Store();
+
+
+	public static void main(String[] args) {
+		
+		Thread thread = new Thread(new MemoryDaemon());
+		thread.setDaemon(true);
+		thread.start();
+		
+		Store store = new Store();
+		
+		for(int i = 1; i < 5; i++) {
+			DigitalVideoDisc media = new DigitalVideoDisc("The Lion King " + i, "Animation", "Roger Allers", 87, 19.95f);
+			store.addMedia(media);
+		}
+
+		DigitalVideoDisc media2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
+		store.addMedia(media2);
+		
+		DigitalVideoDisc media3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		store.addMedia(media3);
+		
+		DigitalVideoDisc media4 = new DigitalVideoDisc("Lion King", "Animation", "Roger Allers", 87, 19.95f);
+		store.addMedia(media4);
+
+		DigitalVideoDisc media5 = new DigitalVideoDisc("The King", "Animation", "Roger Allers", 87, 19.95f);
+		store.addMedia(media5);
+		
+		store.addMedia(new DigitalVideoDisc("SpyXFamily", "Action", "Anya", 85, 19.02f));
+		
+		new StoreManagerScreen(store);	
+	}
+
+
+
 	public static void showMenu() {
 		System.out.println("AIMS:  ");
 		System.out.println("-------------------------");
@@ -297,12 +329,7 @@ public class Aims {
 			sortDVD();
 		}
 	
-	MemoryDaemon memDaemon = new MemoryDaemon();
-	
-	Thread thread = new Thread(memDaemon);
-	thread.setDaemon(true);
-	thread.start();
-	showMenu();
+
 	
 	}
 

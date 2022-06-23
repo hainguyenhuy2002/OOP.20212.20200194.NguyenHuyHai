@@ -1,7 +1,5 @@
 package hust.soict.dsai.swing;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonListener;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -64,9 +62,14 @@ public class NumberGrid extends JFrame{
             }
             else if (button.equals("DEL")){
                 //handels the "DEL" case
+                tfDisplay.setText("");
+                for(int i=0; i<tfDisplay.getText().length()-1;i++)
+                tfDisplay.setText(tfDisplay.getText()+tfDisplay.getText().charAt(i));
+
             }
             else {
                 //handels the "C" case
+                tfDisplay.setText("");
             }
         }
     }
