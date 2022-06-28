@@ -86,10 +86,12 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
 	//Method play
-    public void play() {
-		for(Track track : this.tracks) {
-			track.play();
+    public String play() {
+		String result = "Compact disc - " + this.getTitle() + " : " + "\n";
+		for(Track track: tracks) {
+			result += track.play();
 		}
+		return result;
 	}
 	
 

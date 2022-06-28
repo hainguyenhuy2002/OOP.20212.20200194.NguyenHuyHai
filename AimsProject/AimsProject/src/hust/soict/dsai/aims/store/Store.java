@@ -10,25 +10,25 @@ public class Store {
     ArrayList<Media>();
     
     
-    public void addMedia(Media disc) {
-		if (itemsInStore.size() < MAX_NUMBER_ITEM__STORE) {
+    public String addMedia(Media disc) {
+		
 			int is_duplicated =0;
 			int n;
             for ( n = 0; n < itemsInStore.size(); n++) {
 				if (disc == itemsInStore.get(n)) {
 					is_duplicated = 1;
-                    System.out.println("The disc "+ disc.getTitle() +" is already in the list of cart");
                     break;
 				}
 			}
             if (is_duplicated == 0){
                 
                 itemsInStore.add(disc);
-
+                return "This " + disc.getTitle() + " has been added !!!";
             }
-		} else {
-			System.out.println("The cart is almost full");
-		}
+            else{
+                return "This "+ disc.getTitle() + "has already been in store";
+            }
+		 
 	}
 
     public void addMedia(Media [] dvdList){
@@ -111,6 +111,9 @@ public void IDSearch(int id){
 }
 
 
+public ArrayList<Media> getItemsInStore() {
+    return itemsInStore;
+}
 
 
 public void print(){

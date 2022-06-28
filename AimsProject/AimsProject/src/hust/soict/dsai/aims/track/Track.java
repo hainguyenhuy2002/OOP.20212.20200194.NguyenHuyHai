@@ -42,15 +42,15 @@ public class Track implements Playable{
     }
 
 
-    public void play(){
+    public String play(){
+        String result;
         if(this.getLength() <= 0){
-            System.out.println("The track cannot be played");
+            result = "The track cannot be played";
         }
         else{
-        System.out.println("Playing DVD: "+ this.getTitle());
-
-        System.out.println("DVD length: "+ this.getLength());
+            result = "Playing Track: " + this.getTitle()+ " - Track's length: "+ this.getLength();
         }
+        return result;
 
     }
 
