@@ -1,6 +1,0 @@
-1.If the passing object is not an instance of Media, what happens?
-We must have an if {o instanceof Media}... else {return false} condition. As a result, if the passed-in obj is not of type Media, it will return false.
-			
-	
-2. Which method(s) do you need to implement from this interface (Comparable)?
--compareTo() method
