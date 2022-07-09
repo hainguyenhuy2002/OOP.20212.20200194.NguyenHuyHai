@@ -40,7 +40,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 
     //get detail information about DVD:
     public void getInfo() {
-		int id = this.getid();
+		int id = this.getId();
 		String title = this.getTitle();
 		String category = this.getCategory();
 		String director = this.getDirector();

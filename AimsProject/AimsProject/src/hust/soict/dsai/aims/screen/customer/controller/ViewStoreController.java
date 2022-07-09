@@ -8,23 +8,38 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class ViewStoreController {
     private Store store;
-    private Cart cart;
-	@FXML
+	private Cart cart;
+    @FXML
     private GridPane gridPane;
 
     @FXML
     void btnViewCartPressed(ActionEvent event) {
-
+		try {
+    		final String PLAYABLE_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Cart.fxml";
+        	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PLAYABLE_FXML_FILE_PATH));
+        	fxmlLoader.setController(new CartController(cart, store));
+        	Parent root = fxmlLoader.load();
+        	Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        	stage.setScene(new Scene(root));
+    		stage.setTitle("Store");
+    		stage.show();
+    	} catch (IOException e){
+    		e.printStackTrace();
+    	}
     }
 
     public ViewStoreController(Store store, Cart cart) {
     	this.store = store;
-    	this.cart = cart;
+		this.cart = cart;
     }
 
     public void initialize() {
