@@ -1,4 +1,5 @@
 package hust.soict.dsai.aims.track;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.playable.Playable;
 
 public class Track implements Playable{
@@ -42,15 +43,17 @@ public class Track implements Playable{
     }
 
 
-    public String play(){
+    public String play() throws PlayerException{
         String result;
-        if(this.getLength() <= 0){
-            result = "The track cannot be played";
+        if(this.getLength() > 0){
+            result = "\nPlaying Track: " + this.getTitle()+ " - Track's length: "+ this.getLength();
+        
+        return result;
         }
         else{
-            result = "Playing Track: " + this.getTitle()+ " - Track's length: "+ this.getLength();
+            throw new PlayerException("ERROR: Track length is non-positive!");
+
         }
-        return result;
 
     }
 

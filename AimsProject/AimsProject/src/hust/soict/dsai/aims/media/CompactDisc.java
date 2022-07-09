@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.media;
 import hust.soict.dsai.aims.track.Track;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.playable.Playable;
 import java.util.ArrayList;
 
@@ -70,29 +71,26 @@ public class CompactDisc extends Disc implements Playable{
 	}
 	
     public String toString() {
-		StringBuilder result = new StringBuilder();
-		result.append(String.format("CD title: ", this.getTitle()));
-		result.append(String.format("CD category: ", this.getCategory()));
-		result.append(String.format("CD artist: ", this.getArtist()));
-		result.append(String.format("CD director: ", this.getDirector()));
-		result.append(String.format("CD length: ", this.getLength()));
-		result.append(String.format("CD cost: ", this.getCost()));
-		result.append("\nTracks on CD: \n");
-		int i = 0;
-        for (i = 0; i < tracks.size(); i++) {
-			result.append(tracks.get(i).toString());
-		}
-		return result.toString();
+		String result = new String();
+		
+		result = "CD ID: "+this.getId()+" CD title: " + this.getTitle() + ", CD category: " + this.getCategory() + ", CD artist: " + this.getArtist() + ", CD director: "+this.getDirector()+ ", CD length: "+ this.getLength()+ ", CD cost: "+ this.getCost();
+		return result;
 	}
 	
 	//Method play
-    public String play() {
-		String result = "Compact disc - " + this.getTitle() + " : " + "\n";
+    public String play() throws PlayerException {
+		if (this.getLength() > 0) {
+
+		String result = this.toString() + "\n";
 		for(Track track: tracks) {
 			result += track.play();
 		}
 		return result;
 	}
+	else {
+		throw new PlayerException("ERROR: CD length must be positive!");
+	}
+}
 	
 
 }

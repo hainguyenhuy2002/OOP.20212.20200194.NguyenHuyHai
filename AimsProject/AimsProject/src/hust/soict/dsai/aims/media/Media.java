@@ -26,10 +26,11 @@ public class Media implements Comparable<Media>{
 	}
 
     public Media(String title, String category, float cost) {
-            this(title);
+            this.id = ++ nbMedia;
+
+            this.title = title;
             this.category = category;
             this.cost = cost;
-            this.id = ++ nbMedia;
 
 		}
 
@@ -39,7 +40,7 @@ public class Media implements Comparable<Media>{
         this.id = id;
     }
     
-    public int getid(){
+    public int getId(){
         return id;
     }
     
@@ -114,12 +115,12 @@ public class Media implements Comparable<Media>{
 
 
     //Get detail information about Media
-    public void getInfo() {
-		int id = this.getid();
+    public String getInfo() {
+		int id = this.getId();
 		String title = this.getTitle();
 		String category = this.getCategory();
 		float price = this.getCost();
 		
-		System.out.println("Media - "+ id+" - "+title+" - "+category+" - "+price+"$");
+		return "Media - "+ id+" - "+title+" - "+category+" - "+price+"$";
 	}
 }

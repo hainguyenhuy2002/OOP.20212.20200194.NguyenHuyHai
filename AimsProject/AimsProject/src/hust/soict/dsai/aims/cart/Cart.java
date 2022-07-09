@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.utils.DVDUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.text.DecimalFormat;
+
 
 
 
@@ -11,8 +15,8 @@ public class Cart {
     //private int qtyOrdered = 0;
     // private DigitalVideoDisc itemsOrdered[] = new 
     // DigitalVideoDisc[MAX_NUMBERS_OREDERD];
-    private ArrayList<Media> itemsOrdered
-= new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = 
+			FXCollections.observableArrayList();
 
 
     // public void addDigitalVideoDisc(Media disc) {
@@ -201,7 +205,7 @@ public class Cart {
  
 
     public void CostSort(){
-        ArrayList<Media> CostSorts = DVDUtils.sortByCost(itemsOrdered);
+        ObservableList<Media> CostSorts = DVDUtils.sortByCost(itemsOrdered);
         System.out.println("items list sort by cost: ");
 		for (int i = 0; i < CostSorts.size(); i ++) {
 			CostSorts.get(i).getInfo();
@@ -209,7 +213,7 @@ public class Cart {
     }
 
     public void TitleSort(){
-        ArrayList<Media> TitleSort = DVDUtils.sortByTitle(itemsOrdered);
+        ObservableList<Media> TitleSort = DVDUtils.sortByTitle(itemsOrdered);
         System.out.println("items list sort by title: ");
 		for (int i = 0; i < TitleSort.size(); i ++) {
 			TitleSort.get(i).getInfo();
@@ -283,13 +287,14 @@ public class Cart {
     
 	
     //Calculate total cost
-    public float totalCost(){
+    public String totalCost(){
+
         float total_cost = 0;
         int j;
         for (j = 0; j< itemsOrdered.size(); j++){
             total_cost += itemsOrdered.get(j).getCost(); //Using loop to get the total cost.
         }
-        return total_cost;
+        return String.format("%.2f", total_cost);
 
     }
     //Get lucky items
@@ -328,8 +333,12 @@ public class Cart {
     }
 
     public void emptyCart() {
-		this.itemsOrdered = new ArrayList<Media>(MAX_NUMBERS_OREDERD); 
+		this.itemsOrdered = FXCollections.observableArrayList();; 
 	} 
+
+    public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
 
 
 }
