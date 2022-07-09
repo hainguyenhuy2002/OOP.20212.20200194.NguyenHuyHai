@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx-swt.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.base.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.controls.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.fxml.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.graphics.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.media.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.swing.jar",
+        "/Users/nguyenhuyhai/javafxx-sdk-18.0.1/lib/javafx.web.jar"
+    ]
+}

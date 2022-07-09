@@ -1,4 +1,4 @@
-package control;
+package hust.soict.dsai.javafx.src.control;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

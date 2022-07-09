@@ -26,10 +26,11 @@ public class Media implements Comparable<Media>{
 	}
 
     public Media(String title, String category, float cost) {
-            this(title);
+            this.id = ++ nbMedia;
+
+            this.title = title;
             this.category = category;
             this.cost = cost;
-            this.id = ++ nbMedia;
 
 		}
 

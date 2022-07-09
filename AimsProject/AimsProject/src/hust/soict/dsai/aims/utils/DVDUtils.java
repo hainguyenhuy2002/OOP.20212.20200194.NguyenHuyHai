@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.utils;
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
@@ -34,35 +35,35 @@ public class DVDUtils{
     }
 
 
-	public static ArrayList<Media> sortByCost(ArrayList<Media> Media) {
+	public static ObservableList<Media> sortByCost(ObservableList<Media> itemsOrdered) {
 		int i;
         int j;
-		for(i = 0; i<Media.size()-1; i++) {
-			for (j = 0 ; j < Media.size()-i-1; j++) {
-				if (Media.get(j).getCost() > Media.get(j+1).getCost()) {
+		for(i = 0; i<itemsOrdered.size()-1; i++) {
+			for (j = 0 ; j < itemsOrdered.size()-i-1; j++) {
+				if (itemsOrdered.get(j).getCost() > itemsOrdered.get(j+1).getCost()) {
 					
-					Media.set(j, Media.get(j+1));
-					Media.set(j+1, Media.get(j));
+					itemsOrdered.set(j, itemsOrdered.get(j+1));
+					itemsOrdered.set(j+1, itemsOrdered.get(j));
 				}
 			}
 		}
-        return Media;
+        return itemsOrdered;
     }
     
-        public static ArrayList<Media> sortByTitle(ArrayList<Media> Media) {
+        public static ObservableList<Media> sortByTitle(ObservableList<Media> itemsOrdered) {
             int i;
             int j;            
-            for(i = 0; i<Media.size()-1; i++) {
-                for (j = 0; j < Media.size() - i -1; j++) {
-                    if ((int) Media.get(j).getTitle().charAt(0) > (int) Media.get(j+1).getTitle().charAt(0)) {
+            for(i = 0; i<itemsOrdered.size()-1; i++) {
+                for (j = 0; j < itemsOrdered.size() - i -1; j++) {
+                    if ((int) itemsOrdered.get(j).getTitle().charAt(0) > (int) itemsOrdered.get(j+1).getTitle().charAt(0)) {
                         
-                        Media.set(j, Media.get(j +1));
-                        Media.set(j+1, Media.get(j));
+                        itemsOrdered.set(j, itemsOrdered.get(j +1));
+                        itemsOrdered.set(j+1, itemsOrdered.get(j));
                     }
                 }
         
             }
-            return Media;
+            return itemsOrdered;
         }
 
         

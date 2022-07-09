@@ -1,4 +1,4 @@
-package control;
+package hust.soict.dsai.javafx.src.control;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
