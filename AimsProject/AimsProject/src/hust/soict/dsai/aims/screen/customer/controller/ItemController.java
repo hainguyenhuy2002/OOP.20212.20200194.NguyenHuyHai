@@ -3,7 +3,7 @@ package hust.soict.dsai.aims.screen.customer.controller;
 import java.io.IOException;
 
 import javax.naming.LimitExceededException;
-
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
@@ -41,18 +41,46 @@ public class ItemController {
 
     @FXML
     public void btnAddToCartClicked(ActionEvent event) {
-    	store.removeMedia(media);
-    	cart.addMedia(media);
-    	
+    	Alert alert = new Alert(AlertType.INFORMATION);
+    	alert.setTitle("Add Media");
+    	alert.setHeaderText("Add Media Status:");
+        cart.addMedia(media);
+        try {
+			cart.addMedia(media);
+		} catch (FullCartException e) {
+    		Alert alert1 = new Alert(AlertType.ERROR);
+    		alert1.setTitle("Adding failed");
+    		alert1.setHeaderText("Error infomation: ");
+			alert1.setContentText(e.getMessage());
+    		alert1.showAndWait();
+		}
+        alert.showAndWait();
+
+
     }
 
     @FXML
     void btnPlayClicked(ActionEvent event) {
-
+    	if (media instanceof Playable) {
+    		try {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Playing media");
+        		alert.setHeaderText("Media infomation: ");
+    			alert.setContentText(((Playable) media).play());
+        		alert.showAndWait();
+    		} catch (ClassCastException e) {
+        		Alert alert = new Alert(AlertType.ERROR);
+        		alert.setTitle("Playing failed");
+        		alert.setHeaderText("Error infomation: ");
+    			alert.setContentText(e.getMessage());
+        		alert.showAndWait();
+			}
+    	}
     }
 
-    public void setData(Media media) {
+    public void setData(Media media, Cart cart) {
     	this.media = media;
+        this.cart = cart;
     	lblTitle.setText(media.getTitle());
     	lblCost.setText(media.getCost() + " $");
     	if (media instanceof Playable) {
