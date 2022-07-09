@@ -115,12 +115,12 @@ public class Media implements Comparable<Media>{
 
 
     //Get detail information about Media
-    public void getInfo() {
+    public String getInfo() {
 		int id = this.getId();
 		String title = this.getTitle();
 		String category = this.getCategory();
 		float price = this.getCost();
 		
-		System.out.println("Media - "+ id+" - "+title+" - "+category+" - "+price+"$");
+		return "Media - "+ id+" - "+title+" - "+category+" - "+price+"$";
 	}
 }

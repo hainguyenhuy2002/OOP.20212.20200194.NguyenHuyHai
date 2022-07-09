@@ -5,6 +5,8 @@ import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.utils.DVDUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.text.DecimalFormat;
+
 
 
 
@@ -285,13 +287,14 @@ public class Cart {
     
 	
     //Calculate total cost
-    public float totalCost(){
+    public String totalCost(){
+
         float total_cost = 0;
         int j;
         for (j = 0; j< itemsOrdered.size(); j++){
             total_cost += itemsOrdered.get(j).getCost(); //Using loop to get the total cost.
         }
-        return total_cost;
+        return String.format("%.2f", total_cost);
 
     }
     //Get lucky items

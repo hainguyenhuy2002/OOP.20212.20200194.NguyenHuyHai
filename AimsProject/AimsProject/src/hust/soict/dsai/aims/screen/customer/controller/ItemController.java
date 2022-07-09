@@ -1,8 +1,11 @@
 package hust.soict.dsai.aims.screen.customer.controller;
 
+
 import java.io.IOException;
 
 import javax.naming.LimitExceededException;
+
+import hust.soict.dsai.aims.exception.AddRemoveException;
 import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.Media;
@@ -44,10 +47,12 @@ public class ItemController {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	alert.setTitle("Add Media");
     	alert.setHeaderText("Add Media Status:");
-        cart.addMedia(media);
+		alert.setContentText("Successful add Media: "+ media.getTitle());
+
+		cart.addMedia(media);
         try {
 			cart.addMedia(media);
-		} catch (FullCartException e) {
+		} catch (ClassCastException e) {
     		Alert alert1 = new Alert(AlertType.ERROR);
     		alert1.setTitle("Adding failed");
     		alert1.setHeaderText("Error infomation: ");
@@ -68,7 +73,7 @@ public class ItemController {
         		alert.setHeaderText("Media infomation: ");
     			alert.setContentText(((Playable) media).play());
         		alert.showAndWait();
-    		} catch (ClassCastException e) {
+    		} catch (PlayerException|ClassCastException e) {
         		Alert alert = new Alert(AlertType.ERROR);
         		alert.setTitle("Playing failed");
         		alert.setHeaderText("Error infomation: ");

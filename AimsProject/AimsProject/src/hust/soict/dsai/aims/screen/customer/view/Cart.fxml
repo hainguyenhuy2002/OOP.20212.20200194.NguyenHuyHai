@@ -77,19 +77,20 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label prefHeight="29.0" prefWidth="57.0" text="Total">
+                  <Region prefHeight="29.0" prefWidth="274.0" />
+                  <Label prefHeight="29.0" prefWidth="56.0" text="Total">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="costLabel" prefHeight="29.0" prefWidth="82.0" text="0 $">
+                  <Label fx:id="costLabel" prefHeight="29.0" prefWidth="347.0" text="0 $">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#btnPlaceOrderButtonPressed" style="-fx-background-color: #004cff;" text="Place Order" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#btnPlaceOrderButtonPressed" prefHeight="45.0" prefWidth="154.0" style="-fx-background-color: #004cff;" text="Place Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

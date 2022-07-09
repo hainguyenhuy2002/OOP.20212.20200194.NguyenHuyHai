@@ -2,6 +2,7 @@ package hust.soict.dsai.test.media.hust.soict.dsai.test.media;
 
 import java.util.ArrayList;
 
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 
@@ -13,10 +14,14 @@ public class TestMediaCompareTo {
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("Lion King", "Animation", "Disney Corp", 200, 19.95f);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("FAST AND FURIOUS", "ACTION", "Universal Corp", 100, 10.8f);
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("YASUO", "GAME", " RIOT", 120, 25.45f);
-	
+		try{
 		dvd1.play();
 		dvd2.play();
 		dvd3.play();
+		}
+		catch(PlayerException e1){
+			e1.getMessage();
+		}
 		
 		collection.add(dvd1);
 		collection.add(dvd2);

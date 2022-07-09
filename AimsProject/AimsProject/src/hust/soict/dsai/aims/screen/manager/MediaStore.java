@@ -2,6 +2,8 @@ package hust.soict.dsai.aims.screen.manager;
 
 import javax.swing.*;
 import java.awt.*;
+
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
 import java.awt.event.*;
@@ -46,13 +48,20 @@ public class MediaStore extends JPanel {
             playButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    String result = ((Playable) media).play();
+                    String result;
+                    try{
+                    result = ((Playable) media).play();
                     JFrame f= new JFrame();  
                     d = new JDialog(f , media.getTitle(), true);  
                     d.setLayout( new FlowLayout() );  
                     d.add( new JLabel (result));  
                     d.setSize(400,100);    
-                    d.setVisible(true);  
+                    d.setVisible(true); 
+                    }
+                    catch (PlayerException e1) {
+						// TODO Auto-generated catch block
+						result = e1.getMessage();
+					}
     }  
                 }
             );

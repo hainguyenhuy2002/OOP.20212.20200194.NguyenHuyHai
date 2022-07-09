@@ -86,7 +86,7 @@ public class CartController {
         		alert.setHeaderText("Media infomation: ");
     			alert.setContentText(((Playable) media).play());
         		alert.showAndWait();
-    		} catch (ClassCastException e) {
+    		} catch (PlayerException  | ClassCastException e) {
         		Alert alert = new Alert(AlertType.ERROR);
         		alert.setTitle("Playing failed");
         		alert.setHeaderText("Error infomation: ");

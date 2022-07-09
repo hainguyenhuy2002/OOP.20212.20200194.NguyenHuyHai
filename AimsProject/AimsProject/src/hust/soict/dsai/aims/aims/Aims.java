@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.aims;
 import java.util.Scanner;
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.memory.MemoryDaemon;
@@ -255,7 +256,12 @@ public class Aims {
 			String title = scanner.next();
 			Media media = cart.TitleSearch(title);
 			if(media != null & media instanceof Playable){
+				try{
 				((Playable) media).play();
+				}
+				catch (PlayerException e1){
+					
+				}
 			}
 			else{
 				System.out.println("No media found!");
