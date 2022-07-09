@@ -10,19 +10,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
 import hust.soict.dsai.aims.store.Store;
@@ -73,7 +78,22 @@ public class CartController {
 
     @FXML
     void btnPlayPressed(ActionEvent event) {
-
+        Media media = tblMedia.getSelectionModel().getSelectedItem();
+    	if (media instanceof Playable) {
+    		try {
+        		Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Playing media");
+        		alert.setHeaderText("Media infomation: ");
+    			alert.setContentText(((Playable) media).play());
+        		alert.showAndWait();
+    		} catch (ClassCastException e) {
+        		Alert alert = new Alert(AlertType.ERROR);
+        		alert.setTitle("Playing failed");
+        		alert.setHeaderText("Error infomation: ");
+    			alert.setContentText(e.getMessage());
+        		alert.showAndWait();
+			}
+    	}
     }
 
 
@@ -103,6 +123,33 @@ public class CartController {
     }   
 
 
+    @FXML
+    void btnPlaceOrderButtonPressed(ActionEvent event) {
+    	Alert alert;
+    	alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Order Confirmation!!!");
+		alert.setHeaderText("Would you like to place these oreders??");
+		Optional<ButtonType> result = alert.showAndWait();
+		if(!result.isPresent()) {
+			// alert is exited, no button has been pressed.
+		} else if(result.get() == ButtonType.OK) {
+        
+        if (cart.getItemsOrdered().size() > 0) {
+			cart.emptyCart();
+			Alert alert1 = new Alert(AlertType.INFORMATION);
+			alert1.setTitle("Notice");
+			alert1.setHeaderText("Successful!");
+			alert1.setContentText("Your order has successfully been placed!");
+			alert1.showAndWait();
+    	} else {
+			Alert alert1 = new Alert(AlertType.ERROR);
+			alert1.setTitle("Notice");
+			alert1.setHeaderText("ERROR: Failed!");
+			alert1.setContentText("You don't have any cart!");
+			alert1.showAndWait();
+    	}
+    }
+    }
     public void initialize(){
         colMediaId.setCellValueFactory(new PropertyValueFactory<Media, Integer>("id"));
     	colMediaTitle.setCellValueFactory(new PropertyValueFactory<Media, String>("title"));

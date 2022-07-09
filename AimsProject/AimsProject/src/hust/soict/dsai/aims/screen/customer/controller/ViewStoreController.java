@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 
 public class ViewStoreController {
     private Store store;
-	private Cart cart;
+	private Cart cart ;
     @FXML
     private GridPane gridPane;
 
